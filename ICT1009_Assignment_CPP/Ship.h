@@ -112,13 +112,13 @@ public:
 	void setSpecialIsFull(bool);
 
 	//Methods
-	void updateShipDetails();
-	void updateShipContainerInfo();
-	int fill(int, int);
+	//void updateShipDetails();
+	//void updateShipContainerInfo();
+	//int fill(int, int);
 	void checkFull();
 	bool isShipFull();
 	string getDate();
-	void updateDate(int, int, int);
+	void setDate(int, int, int);
 };
 #endif // !SHIP_H
 
