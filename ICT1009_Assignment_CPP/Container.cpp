@@ -26,4 +26,4 @@ bool Container::getIsSpecial() const { return this->isSpecial; }
 void Container::setIsSpecial(bool isSpecial) { this->isSpecial = isSpecial; }
 
 string Container::getSpecialProperties() const { return this->specialProperties; }
-void Container::setSpecialProperties(string properties) { this->setSpecialProperties = properties; }
+void Container::setSpecialProperties(string properties) { this->specialProperties = properties; }
