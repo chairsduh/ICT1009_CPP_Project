@@ -9,7 +9,7 @@ class Customer {
 private:
 	string name, company, country, portName;
 	int age, day, month, year;
-	vector<Container *>containerArray;
+	vector<Container *> containerArray;
 public:
 	//Constructors
 	Customer() { };
@@ -23,6 +23,8 @@ public:
 	void setName(string);
 	void setAge(int);
 	void setCompany(string);
+	void setCountry(string);
+	void setPortName(string);
 
 	//Methods
 	bool updateCust(string, int, string);
