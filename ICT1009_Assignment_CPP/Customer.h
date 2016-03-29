@@ -12,7 +12,7 @@ private:
 	vector<Container *>containerArray;
 public:
 	//Constructors
-	Customer();
+	Customer() { };
 	Customer(string, int, string, string, string, int, int, int);
 	//Getters & Setters
 	string getName() const;
