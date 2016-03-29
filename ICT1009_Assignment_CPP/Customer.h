@@ -7,14 +7,16 @@ using namespace std;
 
 class Customer {
 private:
-	string name, company, country, portName;
+	string id, name, company, country, portName;
 	int age, day, month, year;
 	vector<Container *> containerArray;
 public:
 	//Constructors
-	Customer() { };
-	Customer(string, int, string, string, string, int, int, int);
+	Customer();
+	Customer(string, string, int, string, string, string, int, int, int, vector<Container *>);
 	//Getters & Setters
+	string getID() const;
+	void setID(string);
 	string getName() const;
 	int getAge() const;
 	string getCompany() const;
@@ -25,6 +27,8 @@ public:
 	void setCompany(string);
 	void setCountry(string);
 	void setPortName(string);
+	vector<Container *> getContainerArray() const;
+	void setContainerArray(vector<Container *>);
 
 	//Methods
 	bool updateCust(string, int, string);

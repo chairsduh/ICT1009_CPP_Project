@@ -6,12 +6,36 @@ using namespace std;
 
 //Constructors
 Customer::Customer() {
+	this->id = "";
 	this->name = "";
 	this->age = 0;
 	this->company = "";
+
+	this->day = 26;
+	this->month = 5;
+	this->year = 2016;
+}
+Customer::Customer(string id, string name, int age, string company, string country, string port, 
+	int day, int month, int year, vector<Container *> temp) {
+	this->id = id;
+	this->name = name;
+	this->age = age;
+	this->company = company;
+
+	this->country = country;
+	this->portName = port;
+
+	this->day = day;
+	this->month = month;
+	this->year = year;
+
+	this->containerArray = temp;
 }
 
 //Getters & Setters
+string Customer::getID() const { return this->id; }
+void Customer::setID(string id) { this->id = id;  }
+
 string Customer::getName() const{ return this->name; }
 void Customer::setName(string name) { this->name = name; }
 
@@ -27,6 +51,10 @@ void Customer::setCountry(string country) { this->country = country; }
 string Customer::getPortName() const { return this->portName; }
 void Customer::setPortName(string portName) { this->portName = portName; }
 
+vector<Container *> Customer::getContainerArray() const { return this->containerArray; }
+void Customer::setContainerArray(vector<Container *> temp) { this->containerArray = temp; }
+
+//Methods
 string Customer::getDate() {
 	stringstream ss;
 	if (this->day >= 1 && this->day <= 9) {
@@ -46,4 +74,13 @@ string Customer::getDate() {
 	ss << this->year << " 00:00:00";
 
 	return ss.str();
+}
+void Customer::setDate(int day, int month, int year) {
+	this->day = day;
+	this->month = month;
+	this->year = year;
+}
+
+bool Customer::updateCust(string name, int age, string company) {
+	return true;
 }
