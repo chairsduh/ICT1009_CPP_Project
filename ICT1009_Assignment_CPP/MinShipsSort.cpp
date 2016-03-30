@@ -56,13 +56,54 @@ vector<Destination> groupDestinations(vector<Customer> custList, vector<Ship> sh
 	return destinationList;
 }
 
-int main()
+bool custCmp(Customer c1, Customer c2)
 {
-	// Function parameters
-	vector<Customer> custList;
-	vector<Ship> shipList;
+	return (c1.getDate() < c2.getDate());
+}
+
+vector<Customer> sortCust(vector<Customer> custList)
+{
+	sort(custList.begin(), custList.end(), custCmp);
+	return custList;
+}
+
+bool shipCmp(Ship s1, Ship s2)
+{
+	return (s1.getDate() < s2.getDate());
+}
+
+vector<Ship> sortShip(vector<Ship> shipList)
+{
+	sort(shipList.begin(), shipList.end(), shipCmp);
+	return shipList;
+}
+
+vector<Destination> sortDestinations(vector<Destination> destinationList)
+{
+	for (auto &i : destinationList)
+	{
+		i.custList = sortCust(i.custList);
+		i.shipList = sortShip(i.shipList);
+	}
+	return destinationList;
+}
+
+vector<Ship> minShipsSort(vector<Customer> custList, vector<Ship> shipList)
+{
+	// Create test data
+	vector<Container *> temp;
+	temp.push_back(new Basic("basic", 20, false, "\0"));
+	temp.push_back(new Basic("basic_special", 30, true, "explosive,toxic"));
+	temp.push_back(new Refrigerated("refrig", 60, false, "\0"));
+	temp.push_back(new Liquid("liquid", 60, false, "\0"));
+	Customer("001", "Ng James", 23, "Apple", "China", "Shanghai", 3, 10, 2015, temp);
+
+
 	vector<string> requiredPorts = getRequiredPorts(custList);
 	vector<Destination> destinationList = groupDestinations(custList, shipList, requiredPorts);
+	destinationList = sortDestinations(destinationList);
+
+	return shipList;
 }
 
 /*
