@@ -2,6 +2,13 @@
 #include <cstdlib>
 #include "FileDialog.h"
 #include "Customer.h"
+#include "MinShipsSort.h"
+#include "Basic.h"
+#include "Container.h"
+#include "Heavy.h"
+#include "Liquid.h"
+#include "Refrigerated.h"
+#include "Ship.h"
 using namespace std;
 
 int menu() {
@@ -24,11 +31,57 @@ int main(int argc, const char *argv[])
 {
 	string path;
 	int choice = menu();
+	// Create test data
+	vector<Customer> custList;
+	vector<Container *> temp;
+	temp.push_back(new Basic("basic", 20, false, "\0"));
+	temp.push_back(new Basic("basic_special", 30, true, "explosive,toxic"));
+	temp.push_back(new Refrigerated("refrig", 60, false, "\0"));
+	temp.push_back(new Liquid("liquid", 60, false, "\0"));
+	Customer c1("001", "Ng James", 23, "Apple", "China", "Shanghai", 3, 10, 2015, temp);
+	custList.push_back(c1);
+
+	vector<Container *> temp2;
+	temp2.push_back(new Basic("basic", 80, false, "\0"));
+	temp2.push_back(new Heavy("heavy", 20, false, "\0"));
+	temp2.push_back(new Heavy("heavy_special", 70, true, "explosive,toxic"));
+	temp2.push_back(new Refrigerated("refrig", 20, false, "\0"));
+	temp2.push_back(new Liquid("liquid", 5, false, "\0"));
+	Customer c2("002", "Alvin Wong", 23, "HTC", "China", "Shanghai", 5, 11, 2015, temp);
+	custList.push_back(c2);
+
+	vector<Container *> temp3;
+	temp3.push_back(new Basic("basic", 120, false, "\0"));
+	temp3.push_back(new Refrigerated("refrig_special", 300, true, "explosive,toxic"));
+	temp3.push_back(new Heavy("heavy", 100, false, "\0"));
+	temp3.push_back(new Liquid("liquid", 10, false, "\0"));
+	Customer c3("003", "Michael Jackson", 23, "SIT", "USA", "Seattle", 5, 10, 2015, temp);
+	custList.push_back(c3);
+
+	/*Ship(string shipName, string owner, double value, string company, int maxLoad, int basicLoad, double basicPrice, 
+	int heavyLoad, double heavyPrice, int liquidLoad, double liquidPrice, int refrigLoad, double refrigPrice,
+	int specialLoad, double specialPrice, string country, string port, int day, int month, int year)*/
+
+	vector<Ship> shipList;
+	Ship s1("Titanic", "James Cameron", 2.0, "Paramount", 300, 300, 10.0,
+		100, 20.0, 40, 80.0, 50, 40.0, 80, 20.0, "China", "Shanghai", 5, 10, 2015);
+	Ship s2("Ace", "Bills Tom", 4.0, "Acess", 400, 400, 10.0,
+		200, 30.0, 40, 80.0, 0, 0.0, 150, 0.0, "USA", "Seattle", 12, 12, 2015);
+	Ship s3("Adda", "Charlie Wang", 10.0, "Adroit", 150, 150, 5.0,
+		100, 20.0, 80, 0.0, 80, 0.0, 00, 0.0, "Ho Chi Minh", "Vietnam", 25, 4, 2015);
+	shipList.push_back(s1);
+	shipList.push_back(s2);
+	shipList.push_back(s3);
+
 	switch (choice)
 	{
 	case 1:
 		path = BrowseFolder();
 		cout << path << endl;
+		break;
+	case 2:
+		shipList = minShipsSort(custList, shipList);
+			break;
 	case 0:
 		exit(0);
 	default:

@@ -1,20 +1,11 @@
 #include "Basic.h"
 #include "Container.h"
-#include "Customer.h"
 #include "Heavy.h"
 #include "Liquid.h"
 #include "Refrigerated.h"
-#include "Ship.h"
-#include <vector>
-#include <string>
+#include "MinShipsSort.h"
 #include <algorithm>
 using namespace std;
-
-typedef struct DestinationType
-{
-	vector<Customer> custList;
-	vector<Ship> shipList;
-}Destination;
 
 // Get all of the ports that need to be visited
 vector<string> getRequiredPorts(vector<Customer> custList)
@@ -22,7 +13,7 @@ vector<string> getRequiredPorts(vector<Customer> custList)
 	vector<string> requiredPorts;
 	for (auto &i : custList)
 	{
-		if (find(requiredPorts.begin(), requiredPorts.end(), i.getPortName()) != requiredPorts.end())
+		if (find(requiredPorts.begin(), requiredPorts.end(), i.getPortName()) == requiredPorts.end())
 		{
 			requiredPorts.push_back(i.getPortName());
 		}
@@ -90,28 +81,12 @@ vector<Destination> sortDestinations(vector<Destination> destinationList)
 
 vector<Ship> minShipsSort(vector<Customer> custList, vector<Ship> shipList)
 {
-	// Create test data
-	vector<Container *> temp;
-	temp.push_back(new Basic("basic", 20, false, "\0"));
-	temp.push_back(new Basic("basic_special", 30, true, "explosive,toxic"));
-	temp.push_back(new Refrigerated("refrig", 60, false, "\0"));
-	temp.push_back(new Liquid("liquid", 60, false, "\0"));
-	Customer("001", "Ng James", 23, "Apple", "China", "Shanghai", 3, 10, 2015, temp);
-
-
+	// Sort customers and ships
 	vector<string> requiredPorts = getRequiredPorts(custList);
 	vector<Destination> destinationList = groupDestinations(custList, shipList, requiredPorts);
 	destinationList = sortDestinations(destinationList);
 
+	// Fill customers
+
 	return shipList;
 }
-
-/*
-group customers according to destination
-reject custopmers with a destination that doesnt exit
-within each group, reject customers that have a due date that cannot be met by any ship going to that destination
-Order ships and customers according to their due date [earliest]
-fill in said order
-
-
-*/

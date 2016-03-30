@@ -152,6 +152,7 @@
     <ClInclude Include="FileDialog.h" />
     <ClInclude Include="Heavy.h" />
     <ClInclude Include="Liquid.h" />
+    <ClInclude Include="MinShipsSort.h" />
     <ClInclude Include="Refrigerated.h" />
     <ClInclude Include="Ship.h" />
   </ItemGroup>
