@@ -5,88 +5,71 @@
 #include "Refrigerated.h"
 #include "MinShipsSort.h"
 #include <algorithm>
+#include <iostream>
 using namespace std;
 
-// Get all of the ports that need to be visited
-vector<string> getRequiredPorts(vector<Customer> custList)
+vector<ValidShips> sortShips(vector<Customer> custList, vector<Ship> shipList)
 {
-	vector<string> requiredPorts;
+	vector<ValidShips> validShipsList;
 	for (auto &i : custList)
 	{
-		if (find(requiredPorts.begin(), requiredPorts.end(), i.getPortName()) == requiredPorts.end())
-		{
-			requiredPorts.push_back(i.getPortName());
-		}
-	}
-	return requiredPorts;
-}
-
-vector<Destination> groupDestinations(vector<Customer> custList, vector<Ship> shipList, vector<string> requiredPorts)
-{
-	vector<Destination> destinationList;
-	for (auto &i : requiredPorts)
-	{
-		Destination tempDest;
-		for (auto &j : custList)
-		{
-			if (j.getPortName() == i)
-			{
-				tempDest.custList.push_back(j);
-			}
-		}
-
+		ValidShips temp;
+		temp.cust = i;
 		for (auto &j : shipList)
 		{
-			if (j.getPort() == i)
+			if (i.getPortName() == j.getPort() && i.getDate() >= j.getDate())
 			{
-				tempDest.shipList.push_back(j);
+				temp.shipList.push_back(j);
 			}
 		}
-		destinationList.push_back(tempDest);
+		if (temp.shipList.size() == 0)
+		{
+			cout << "No ships for " << i.getName() << endl;
+		}
+		else
+		{
+			validShipsList.push_back(temp);
+		}
 	}
-	return destinationList;
+	return validShipsList;
 }
 
-bool custCmp(Customer c1, Customer c2)
+bool custCmp(ValidShips v1, ValidShips v2)
 {
-	return (c1.getDate() < c2.getDate());
+	return (v1.cust.getDate() < v2.cust.getDate());
 }
 
-vector<Customer> sortCust(vector<Customer> custList)
+vector<ValidShips> sortCustByDate(vector<ValidShips> validShipsList)
 {
-	sort(custList.begin(), custList.end(), custCmp);
-	return custList;
+	sort(validShipsList.begin(), validShipsList.end(), custCmp);
+	return validShipsList;
 }
 
 bool shipCmp(Ship s1, Ship s2)
 {
-	return (s1.getDate() < s2.getDate());
+	return (s1.getMaxLoad() > s2.getMaxLoad());
 }
 
-vector<Ship> sortShip(vector<Ship> shipList)
+vector<ValidShips> sortShipsByCapacity(vector<ValidShips> validShipsList)
 {
-	sort(shipList.begin(), shipList.end(), shipCmp);
-	return shipList;
-}
-
-vector<Destination> sortDestinations(vector<Destination> destinationList)
-{
-	for (auto &i : destinationList)
+	for (auto &i : validShipsList)
 	{
-		i.custList = sortCust(i.custList);
-		i.shipList = sortShip(i.shipList);
+		sort(i.shipList.begin(), i.shipList.end(), shipCmp);
 	}
-	return destinationList;
+	return validShipsList;
 }
 
 vector<Ship> minShipsSort(vector<Customer> custList, vector<Ship> shipList)
 {
-	// Sort customers and ships
-	vector<string> requiredPorts = getRequiredPorts(custList);
-	vector<Destination> destinationList = groupDestinations(custList, shipList, requiredPorts);
-	destinationList = sortDestinations(destinationList);
+	// Map each customer to a vector of valid ships
+	vector<ValidShips> validShipsList = sortShips(custList, shipList);
+	
+	// Sort customers by date (earliest date first), sort valid ships by capacity (largest max capacity first)
+	validShipsList = sortCustByDate(validShipsList);
+	validShipsList = sortShipsByCapacity(validShipsList);
 
 	// Fill customers
+
 
 	return shipList;
 }

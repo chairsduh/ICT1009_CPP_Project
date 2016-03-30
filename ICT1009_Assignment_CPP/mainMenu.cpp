@@ -29,8 +29,6 @@ int menu() {
 
 int main(int argc, const char *argv[])
 {
-	string path;
-	int choice = menu();
 	// Create test data
 	vector<Customer> custList;
 	vector<Container *> temp;
@@ -58,7 +56,7 @@ int main(int argc, const char *argv[])
 	Customer c3("003", "Michael Jackson", 23, "SIT", "USA", "Seattle", 5, 10, 2015, temp);
 	custList.push_back(c3);
 
-	/*Ship(string shipName, string owner, double value, string company, int maxLoad, int basicLoad, double basicPrice, 
+	/*Ship(string shipName, string owner, double value, string company, int maxLoad, int basicLoad, double basicPrice,
 	int heavyLoad, double heavyPrice, int liquidLoad, double liquidPrice, int refrigLoad, double refrigPrice,
 	int specialLoad, double specialPrice, string country, string port, int day, int month, int year)*/
 
@@ -69,23 +67,41 @@ int main(int argc, const char *argv[])
 		200, 30.0, 40, 80.0, 0, 0.0, 150, 0.0, "USA", "Seattle", 12, 12, 2015);
 	Ship s3("Adda", "Charlie Wang", 10.0, "Adroit", 150, 150, 5.0,
 		100, 20.0, 80, 0.0, 80, 0.0, 00, 0.0, "Ho Chi Minh", "Vietnam", 25, 4, 2015);
+	Ship s4("S4", "James Cameron", 2.0, "Paramount", 300, 300, 10.0,
+		100, 20.0, 40, 80.0, 50, 40.0, 80, 20.0, "China", "Shanghai", 2, 9, 2015);
+	Ship s5("S5", "Bills Tom", 4.0, "Acess", 400, 400, 10.0,
+		200, 30.0, 40, 80.0, 0, 0.0, 150, 0.0, "USA", "Seattle", 12, 12, 2014);
+	Ship s6("S6", "James Cameron", 2.0, "Paramount", 300, 300, 10.0,
+		100, 20.0, 40, 80.0, 50, 40.0, 80, 20.0, "China", "Shanghai", 5, 11, 2014);
+	Ship s7("S7", "Bills Tom", 4.0, "Acess", 400, 400, 10.0,
+		200, 30.0, 40, 80.0, 0, 0.0, 150, 0.0, "USA", "Seattle", 12, 12, 2013);
 	shipList.push_back(s1);
 	shipList.push_back(s2);
 	shipList.push_back(s3);
+	shipList.push_back(s4);
+	shipList.push_back(s5);
+	shipList.push_back(s6);
+	shipList.push_back(s7);
 
-	switch (choice)
+	string path;
+	while (1)
 	{
-	case 1:
-		path = BrowseFolder();
-		cout << path << endl;
-		break;
-	case 2:
-		shipList = minShipsSort(custList, shipList);
+		int choice = menu();
+
+		switch (choice)
+		{
+		case 1:
+			path = BrowseFolder();
+			cout << path << endl;
 			break;
-	case 0:
-		exit(0);
-	default:
-		break;
+		case 2:
+			shipList = minShipsSort(custList, shipList);
+			break;
+		case 0:
+			exit(0);
+		default:
+			break;
+		}
 	}
 
 	return 0;
