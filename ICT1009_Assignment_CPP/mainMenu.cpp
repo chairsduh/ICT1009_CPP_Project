@@ -45,7 +45,7 @@ int main(int argc, const char *argv[])
 	temp2.push_back(new Heavy("heavy", 70, true, "explosive,toxic"));
 	temp2.push_back(new Refrigerated("refrig", 20, false, "\0"));
 	temp2.push_back(new Liquid("liquid", 5, false, "\0"));
-	Customer c2("002", "Alvin Wong", 23, "HTC", "China", "Shanghai", 5, 11, 2015, temp);
+	Customer c2("002", "Alvin Wong", 23, "HTC", "China", "Shanghai", 5, 11, 2015, temp2);
 	custList.push_back(c2);
 
 	vector<Container *> temp3;
@@ -53,7 +53,7 @@ int main(int argc, const char *argv[])
 	temp3.push_back(new Refrigerated("refrig", 300, true, "explosive,toxic"));
 	temp3.push_back(new Heavy("heavy", 100, false, "\0"));
 	temp3.push_back(new Liquid("liquid", 10, false, "\0"));
-	Customer c3("003", "Michael Jackson", 23, "SIT", "USA", "Seattle", 5, 10, 2015, temp);
+	Customer c3("003", "Michael Jackson", 23, "SIT", "USA", "Seattle", 5, 10, 2015, temp3);
 	custList.push_back(c3);
 
 	/*Ship(string shipName, string owner, double value, string company, int maxLoad, int basicLoad, double basicPrice,
