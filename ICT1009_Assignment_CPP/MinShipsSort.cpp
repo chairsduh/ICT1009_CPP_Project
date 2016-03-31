@@ -171,7 +171,7 @@ vector<Ship> fillFun(vector<ValidShips> input)
 
 	//Refrig Loop
 	for (auto &i : input) {
-		cout << "Filling " << i.cust.getName() << "'s refrigerated containers... " << endl;
+		cout << "Filling " << i.cust.getName() << "'ss refrigerated containers... " << endl;
 		for (auto &j : i.cust.getContainerArray()) {
 			if (j->getType() == "refrig" && j->getIsSpecial() == false) {
 				int amount = j->getAmount();
