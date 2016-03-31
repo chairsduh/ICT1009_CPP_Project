@@ -85,8 +85,7 @@ vector<Ship> fillFun(vector<ValidShips> input)
 				int amount = j->getAmount;
 				for (auto &k : i.shipList) {
 					//cout << k.getShipName() << " ";
-					k->setCurrentSpecialTotal();
-					k->setCurrentRefrigLoad();
+					k->setCurrentSpecialRefrig;
 				}
 				cout << endl;
 
