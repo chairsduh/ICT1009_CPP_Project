@@ -85,7 +85,7 @@ vector<Ship> fillFun(vector<ValidShips> input)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." <<endl;
-					/*amount =*/ k->setCurrentSpecialRefrig(amount);
+					amount = k->setCurrentSpecialRefrig(amount);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." <<endl;
@@ -108,7 +108,7 @@ vector<Ship> fillFun(vector<ValidShips> input)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
-					/*amount =*/ k->setCurrentSpecialHeavy(amount);
+					amount = k->setCurrentSpecialHeavy(amount);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." << endl;
@@ -131,7 +131,7 @@ vector<Ship> fillFun(vector<ValidShips> input)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
-					/*amount =*/ k->setCurrentLiquidLoad(amount);
+					amount = k->setCurrentLiquidLoad(amount);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." <<endl;
@@ -154,7 +154,7 @@ vector<Ship> fillFun(vector<ValidShips> input)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
-					/*amount =*/ k->setCurrentSpecialBasic(amount);
+					amount = k->setCurrentSpecialBasic(amount);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." << endl;
@@ -171,13 +171,13 @@ vector<Ship> fillFun(vector<ValidShips> input)
 
 	//Refrig Loop
 	for (auto &i : input) {
-		cout << "Filling " << i.cust.getName() << "'ss refrigerated containers... " << endl;
+		cout << "Filling " << i.cust.getName() << "'s refrigerated containers... " << endl;
 		for (auto &j : i.cust.getContainerArray()) {
 			if (j->getType() == "refrig" && j->getIsSpecial() == false) {
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
-					/*amount =*/ k->setCurrentRefrigLoad(amount);
+					amount = k->setCurrentRefrigLoad(amount);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." << endl;
@@ -200,7 +200,7 @@ vector<Ship> fillFun(vector<ValidShips> input)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
-					/*amount =*/ k->setCurrentHeavyLoad(amount);
+					amount = k->setCurrentHeavyLoad(amount);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." << endl;
@@ -223,7 +223,7 @@ vector<Ship> fillFun(vector<ValidShips> input)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
-					/*amount =*/ k->setCurrentLiquidLoad(amount);
+					amount = k->setCurrentLiquidLoad(amount);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." << endl;
@@ -246,7 +246,7 @@ vector<Ship> fillFun(vector<ValidShips> input)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
-					/*amount =*/ k->setCurrentBasicLoad(amount);
+					amount = k->setCurrentBasicLoad(amount);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." << endl;
