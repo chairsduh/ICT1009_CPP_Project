@@ -15,7 +15,7 @@ private:
 	double basicPrice, heavyPrice, refrigeratedPrice, liquidPrice, specialPrice;
 
 	//For Task 3 - 5
-	int currentMaxLoad, currentBasicLoad, currentHeavyLoad, currentRefrigLoad, currentLiquidLoad;
+	int currentMaxLoad = 0, currentBasicLoad = 0, currentHeavyLoad = 0, currentRefrigLoad = 0, currentLiquidLoad = 0;
 	int currentSpecialTotal = 0;
 	int currentSpecialBasic = 0;
 	int currentSpecialHeavy = 0;

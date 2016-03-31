@@ -6,12 +6,27 @@
 using namespace std;
 
 //Empty Constructor
-Ship::Ship() { this->shipName = ""; }
+Ship::Ship() { 
+	this->shipName = ""; 
+	currentMaxLoad = 0, currentBasicLoad = 0, currentHeavyLoad = 0, currentRefrigLoad = 0, currentLiquidLoad = 0;
+	currentSpecialTotal = 0;
+	currentSpecialBasic = 0;
+	currentSpecialHeavy = 0;
+	currentSpecialRefrig = 0;
+	currentSpecialLiquid = 0;
+	double currentCost = 0;
+}
 //Constructor with everything
 Ship::Ship(string shipName, string owner, double value, string company, int maxLoad, int basicLoad, double basicPrice, 
 	int heavyLoad, double heavyPrice, int liquidLoad, double liquidPrice, int refrigLoad, double refrigPrice,
 	int specialLoad, double specialPrice, string country, string port, int day, int month, int year)
 {
+	currentMaxLoad = 0, currentBasicLoad = 0, currentHeavyLoad = 0, currentRefrigLoad = 0, currentLiquidLoad = 0;
+	currentSpecialTotal = 0;
+	currentSpecialBasic = 0;
+	currentSpecialHeavy = 0;
+	currentSpecialRefrig = 0;
+	currentSpecialLiquid = 0;
 	this->shipName = shipName;
 	this->owner = owner;
 	this->shipValue = value;
@@ -39,6 +54,12 @@ Ship::Ship(string shipName, string owner, double value, string company, int maxL
 Ship::Ship(string shipName, string owner, double value, string company, int maxLoad, int basicLoad, double basicPrice,
 	int heavyLoad, double heavyPrice, int liquidLoad, double liquidPrice ,string country, string port, int day, int month, int year)
 {
+	currentMaxLoad = 0, currentBasicLoad = 0, currentHeavyLoad = 0, currentRefrigLoad = 0, currentLiquidLoad = 0;
+	currentSpecialTotal = 0;
+	currentSpecialBasic = 0;
+	currentSpecialHeavy = 0;
+	currentSpecialRefrig = 0;
+	currentSpecialLiquid = 0;
 	this->shipName = shipName;
 	this->owner = owner;
 	this->shipValue = value;
