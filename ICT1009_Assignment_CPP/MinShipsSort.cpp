@@ -194,7 +194,7 @@ vector<Ship> fillFun(vector<ValidShips> input)
 
 	//Heavy Loop
 	for (auto &i : input) {
-		cout << "Filling " << i.cust.getName() << "'s heavy containers... " << endl;
+		cout << "Filling " << i.cust.getName() << "' heavy containers... " << endl;
 		for (auto &j : i.cust.getContainerArray()) {
 			if (j->getType() == "heavy" && j->getIsSpecial() == false) {
 				int amount = j->getAmount();
