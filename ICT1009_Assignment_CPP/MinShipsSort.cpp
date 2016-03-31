@@ -79,17 +79,184 @@ vector<Ship> fillFun(vector<ValidShips> input)
 
 	//Refrig Special Loop
 	for (auto &i : input) {
-		cout << i.cust.getName() << ": ";
+		cout << "Filling " << i.cust.getName() << "'s refrigerated (special) containers... " << endl;
 		for (auto &j : i.cust.getContainerArray()) {
 			if (j->getType() == "refrig" && j->getIsSpecial() == true) {
-				int amount = j->getAmount;
+				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
-					//cout << k.getShipName() << " ";
-					k->setCurrentSpecialRefrig;
+					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." <<endl;
+					/*amount =*/ k->setCurrentSpecialRefrig(amount);
+					if (amount == 0) {
+						//done with this type of container for this customer
+						cout << "All containers loaded. No error." <<endl;
+						break;
+					}
 				}
-				cout << endl;
+				if (amount != 0) {
+					cout << "Failed to fit " << amount << " refrigerated (special) containers for " << i.cust.getName() << endl;
+				}
+				break; //break after finding the correct container type
+			}
+		}
+	}
 
-				break;
+	//Heavy Special Loop
+	for (auto &i : input) {
+		cout << "Filling " << i.cust.getName() << "'s heavy (special) containers... " << endl;
+		for (auto &j : i.cust.getContainerArray()) {
+			if (j->getType() == "heavy" && j->getIsSpecial() == true) {
+				int amount = j->getAmount();
+				for (auto &k : i.shipList) {
+					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
+					/*amount =*/ k->setCurrentSpecialHeavy(amount);
+					if (amount == 0) {
+						//done with this type of container for this customer
+						cout << "All containers loaded. No error." << endl;
+						break;
+					}
+				}
+				if (amount != 0) {
+					cout << "Failed to fit " << amount << " heavy (special) containers for " << i.cust.getName() << endl;
+				}
+				break; //break after finding the correct container type
+			}
+		}
+	}
+
+	//Liquid Special Loop
+	for (auto &i : input) {
+		cout << "Filling " << i.cust.getName() << "'s liquid (special) containers... " << endl;
+		for (auto &j : i.cust.getContainerArray()) {
+			if (j->getType() == "liquid" && j->getIsSpecial() == true) {
+				int amount = j->getAmount();
+				for (auto &k : i.shipList) {
+					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
+					/*amount =*/ k->setCurrentLiquidLoad(amount);
+					if (amount == 0) {
+						//done with this type of container for this customer
+						cout << "All containers loaded. No error." <<endl;
+						break;
+					}
+				}
+				if (amount != 0) {
+					cout << "Failed to fit " << amount << " liquid (special) containers for " << i.cust.getName() << endl;
+				}
+				break; //break after finding the correct container type
+			}
+		}
+	}
+
+	//Basic Special Loop
+	for (auto &i : input) {
+		cout << "Filling " << i.cust.getName() << "'s basic (special) containers... " << endl;
+		for (auto &j : i.cust.getContainerArray()) {
+			if (j->getType() == "basic" && j->getIsSpecial() == true) {
+				int amount = j->getAmount();
+				for (auto &k : i.shipList) {
+					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
+					/*amount =*/ k->setCurrentSpecialBasic(amount);
+					if (amount == 0) {
+						//done with this type of container for this customer
+						cout << "All containers loaded. No error." << endl;
+						break;
+					}
+				}
+				if (amount != 0) {
+					cout << "Failed to fit " << amount << " basic (special) containers for " << i.cust.getName() << endl;
+				}
+				break; //break after finding the correct container type
+			}
+		}
+	}
+
+	//Refrig Loop
+	for (auto &i : input) {
+		cout << "Filling " << i.cust.getName() << "'s refrigerated containers... " << endl;
+		for (auto &j : i.cust.getContainerArray()) {
+			if (j->getType() == "refrig" && j->getIsSpecial() == false) {
+				int amount = j->getAmount();
+				for (auto &k : i.shipList) {
+					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
+					/*amount =*/ k->setCurrentRefrigLoad(amount);
+					if (amount == 0) {
+						//done with this type of container for this customer
+						cout << "All containers loaded. No error." << endl;
+						break;
+					}
+				}
+				if (amount != 0) {
+					cout << "Failed to fit " << amount << " refrigerated containers for " << i.cust.getName() << endl;
+				}
+				break; //break after finding the correct container type
+			}
+		}
+	}
+
+	//Heavy Loop
+	for (auto &i : input) {
+		cout << "Filling " << i.cust.getName() << "'s heavy containers... " << endl;
+		for (auto &j : i.cust.getContainerArray()) {
+			if (j->getType() == "heavy" && j->getIsSpecial() == false) {
+				int amount = j->getAmount();
+				for (auto &k : i.shipList) {
+					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
+					/*amount =*/ k->setCurrentHeavyLoad(amount);
+					if (amount == 0) {
+						//done with this type of container for this customer
+						cout << "All containers loaded. No error." << endl;
+						break;
+					}
+				}
+				if (amount != 0) {
+					cout << "Failed to fit " << amount << " heavy containers for " << i.cust.getName() << endl;
+				}
+				break; //break after finding the correct container type
+			}
+		}
+	}
+
+	//Liquid Loop
+	for (auto &i : input) {
+		cout << "Filling " << i.cust.getName() << "'s liquid containers... " << endl;
+		for (auto &j : i.cust.getContainerArray()) {
+			if (j->getType() == "liquid" && j->getIsSpecial() == false) {
+				int amount = j->getAmount();
+				for (auto &k : i.shipList) {
+					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
+					/*amount =*/ k->setCurrentLiquidLoad(amount);
+					if (amount == 0) {
+						//done with this type of container for this customer
+						cout << "All containers loaded. No error." << endl;
+						break;
+					}
+				}
+				if (amount != 0) {
+					cout << "Failed to fit " << amount << " liquid containers for " << i.cust.getName() << endl;
+				}
+				break; //break after finding the correct container type
+			}
+		}
+	}
+
+	//Basic Loop
+	for (auto &i : input) {
+		cout << "Filling " << i.cust.getName() << "'s basic containers... " << endl;
+		for (auto &j : i.cust.getContainerArray()) {
+			if (j->getType() == "basic" && j->getIsSpecial() == false) {
+				int amount = j->getAmount();
+				for (auto &k : i.shipList) {
+					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
+					/*amount =*/ k->setCurrentBasicLoad(amount);
+					if (amount == 0) {
+						//done with this type of container for this customer
+						cout << "All containers loaded. No error." << endl;
+						break;
+					}
+				}
+				if (amount != 0) {
+					cout << "Failed to fit " << amount << " basic containers for " << i.cust.getName() << endl;
+				}
+				break; //break after finding the correct container type
 			}
 		}
 	}
