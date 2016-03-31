@@ -8,7 +8,7 @@
 #include <iostream>
 using namespace std;
 
-vector<ValidShips> sortShips(vector<Customer> custList, vector<Ship> shipList)
+vector<ValidShips> sortShips(vector<Customer> custList, vector<Ship> &shipList)
 {
 	vector<ValidShips> validShipsList;
 	for (auto &i : custList)
@@ -19,7 +19,7 @@ vector<ValidShips> sortShips(vector<Customer> custList, vector<Ship> shipList)
 		{
 			if (i.getPortName() == j.getPort() && i.getDate() >= j.getDate())
 			{
-				temp.shipList.push_back(j);
+				temp.shipList.push_back(&j);
 			}
 		}
 		if (temp.shipList.size() == 0)
@@ -45,9 +45,9 @@ vector<ValidShips> sortCustByDate(vector<ValidShips> validShipsList)
 	return validShipsList;
 }
 
-bool shipCmp(Ship s1, Ship s2)
+bool shipCmp(Ship *s1, Ship *s2)
 {
-	return (s1.getMaxLoad() > s2.getMaxLoad());
+	return (s1->getMaxLoad() > s2->getMaxLoad());
 }
 
 vector<ValidShips> sortShipsByCapacity(vector<ValidShips> validShipsList)
@@ -67,9 +67,6 @@ vector<Ship> minShipsSort(vector<Customer> custList, vector<Ship> shipList)
 	// Sort customers by date (earliest date first), sort valid ships by capacity (largest max capacity first)
 	validShipsList = sortCustByDate(validShipsList);
 	validShipsList = sortShipsByCapacity(validShipsList);
-
-	// Fill customers
-
 
 	return shipList;
 }
