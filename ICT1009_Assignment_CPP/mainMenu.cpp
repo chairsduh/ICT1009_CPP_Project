@@ -33,7 +33,7 @@ int main(int argc, const char *argv[])
 	vector<Customer> custList;
 	vector<Container *> temp;
 	temp.push_back(new Basic("basic", 20, false, "\0"));
-	temp.push_back(new Basic("basic_special", 30, true, "explosive,toxic"));
+	temp.push_back(new Basic("basic", 30, true, "explosive,toxic"));
 	temp.push_back(new Refrigerated("refrig", 60, false, "\0"));
 	temp.push_back(new Liquid("liquid", 60, false, "\0"));
 	Customer c1("001", "Ng James", 23, "Apple", "China", "Shanghai", 3, 10, 2015, temp);
@@ -42,7 +42,7 @@ int main(int argc, const char *argv[])
 	vector<Container *> temp2;
 	temp2.push_back(new Basic("basic", 80, false, "\0"));
 	temp2.push_back(new Heavy("heavy", 20, false, "\0"));
-	temp2.push_back(new Heavy("heavy_special", 70, true, "explosive,toxic"));
+	temp2.push_back(new Heavy("heavy", 70, true, "explosive,toxic"));
 	temp2.push_back(new Refrigerated("refrig", 20, false, "\0"));
 	temp2.push_back(new Liquid("liquid", 5, false, "\0"));
 	Customer c2("002", "Alvin Wong", 23, "HTC", "China", "Shanghai", 5, 11, 2015, temp);
@@ -50,7 +50,7 @@ int main(int argc, const char *argv[])
 
 	vector<Container *> temp3;
 	temp3.push_back(new Basic("basic", 120, false, "\0"));
-	temp3.push_back(new Refrigerated("refrig_special", 300, true, "explosive,toxic"));
+	temp3.push_back(new Refrigerated("refrig", 300, true, "explosive,toxic"));
 	temp3.push_back(new Heavy("heavy", 100, false, "\0"));
 	temp3.push_back(new Liquid("liquid", 10, false, "\0"));
 	Customer c3("003", "Michael Jackson", 23, "SIT", "USA", "Seattle", 5, 10, 2015, temp);

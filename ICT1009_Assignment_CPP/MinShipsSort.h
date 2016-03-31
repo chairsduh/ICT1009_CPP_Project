@@ -17,4 +17,5 @@ vector<Ship> minShipsSort(vector<Customer>, vector<Ship>);
 vector<ValidShips> sortShips(vector<Customer>, vector<Ship>&);
 bool custCmp(ValidShips, ValidShips);
 bool shipCmp(Ship *, Ship *);
+vector<Ship> fillFun(vector<ValidShips>);
 #endif

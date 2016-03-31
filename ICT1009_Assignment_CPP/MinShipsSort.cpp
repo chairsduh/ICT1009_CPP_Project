@@ -67,6 +67,33 @@ vector<Ship> minShipsSort(vector<Customer> custList, vector<Ship> shipList)
 	// Sort customers by date (earliest date first), sort valid ships by capacity (largest max capacity first)
 	validShipsList = sortCustByDate(validShipsList);
 	validShipsList = sortShipsByCapacity(validShipsList);
+	// Fill customers
+	shipList = fillFun(validShipsList);
 
 	return shipList;
+}
+
+vector<Ship> fillFun(vector<ValidShips> input) 
+{
+	vector<Ship> temp;
+
+	//Refrig Special Loop
+	for (auto &i : input) {
+		cout << i.cust.getName() << ": ";
+		for (auto &j : i.cust.getContainerArray()) {
+			if (j->getType() == "refrig" && j->getIsSpecial() == true) {
+				int amount = j->getAmount;
+				for (auto &k : i.shipList) {
+					//cout << k.getShipName() << " ";
+					k->setCurrentSpecialTotal();
+					k->setCurrentRefrigLoad();
+				}
+				cout << endl;
+
+				break;
+			}
+		}
+	}
+
+	return temp;
 }
