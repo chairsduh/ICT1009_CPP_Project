@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <iomanip>
 #include <sstream>
 #include "Customer.h"
 using namespace std;
@@ -85,4 +86,29 @@ void Customer::setDate(int day, int month, int year) {
 
 bool Customer::updateCust(string name, int age, string company) {
 	return true;
+}
+
+ostream& operator<<(ostream& out, const Customer& aCust) {
+	out << setfill('-') << setw(40) << "-" << endl;
+	out << "Customer ID " << aCust.id  << endl;
+	out << setfill('-') << setw(40) << "-" << endl;
+	out << "Name: "  << aCust.name  << setfill('\0') << setw(10) << "Age: " << aCust.age << endl;
+	out << "Company: " << aCust.company << endl;
+	out << endl;
+	out << "Destination: " << endl;
+	out << "Country: "  << aCust.country << setfill('\0') << setw(10) << "Port: " << aCust.portName << endl;
+	out << "Dateline: " << aCust.day << "/" << aCust.month  << "/" << aCust.year << endl;
+	out << endl;
+	out << "Container Details: " << endl;
+	vector<Container *> temp = aCust.containerArray;
+	for (int i = 0; i < temp.size(); i++) {
+		out << "Type: " << temp[i]->getType() << endl;
+		out << "Amount: " << temp[i]->getAmount();
+		if (temp[i]->getIsSpecial()) {
+			out << setfill('\0') << setw(15) << "Properties: " << temp[i]->getSpecialProperties() << endl;
+		}
+		out << endl;
+	}
+	
+	return out;
 }

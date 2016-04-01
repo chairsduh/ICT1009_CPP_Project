@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="Basic.h" />
     <ClInclude Include="Container.h" />
+    <ClInclude Include="CRUDFunction.h" />
     <ClInclude Include="Customer.h" />
     <ClInclude Include="FileDialog.h" />
     <ClInclude Include="Heavy.h" />
@@ -157,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Container.cpp" />
+    <ClCompile Include="CRUDFunction.cpp" />
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="mainMenu.cpp" />
     <ClCompile Include="MinShipsSort.cpp" />

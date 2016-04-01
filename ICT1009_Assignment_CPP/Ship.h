@@ -4,6 +4,7 @@
 using namespace std;
 
 class Ship {
+	friend ostream& operator<<(ostream&, const Ship&);
 private:
 	//Variables for Ship Details
 	string shipName, owner, company, country, port;
