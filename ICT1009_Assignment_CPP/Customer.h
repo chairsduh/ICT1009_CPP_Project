@@ -6,6 +6,7 @@
 using namespace std;
 
 class Customer {
+	friend ostream& operator<<(ostream&, const Customer&);
 private:
 	string id, name, company, country, portName;
 	int age, day, month, year;

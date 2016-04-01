@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include <iomanip>
 #include <sstream>
 #include "Ship.h"
 using namespace std;
@@ -336,4 +337,29 @@ void Ship::checkFull()
 	else specialIsFull = false;
 	if (currentLiquidLoad >= liquidLoad) liquidIsFull = true;
 	else liquidIsFull = false;
+}
+
+ostream& operator<<(ostream& out, const Ship& aShip) {
+	out << setfill('-') << setw(40) << "-" << endl;
+	out << "Ship Name: " << aShip.shipName << endl;
+	out << setfill('-') << setw(40) << "-" << endl;
+	out << "Owner: " << aShip.owner << setfill('\0') << setw(10) << "Value in billion: " << aShip.shipValue << endl;
+	out << "Company: " << aShip.company << endl;
+	out << endl;
+	out << "Destination: " << endl;
+	out << "Country: " << aShip.country << setfill('\0') << setw(10) << "Port: " << aShip.port << endl;
+	out << "Dateline: " << aShip.day << "/" << aShip.month << "/" << aShip.year << endl;
+	out << endl;
+	out << "Container Details: " << endl;
+	out << "Max Load: " << aShip.maxLoad;
+	out << "Basic Load: " << aShip.basicLoad << setfill('\0') << setw(10) << "Price: " << aShip.basicPrice << endl;
+	out << "Heavy Load: " << aShip.heavyLoad << setfill('\0') << setw(10) << "Price: " << aShip.heavyPrice << endl;
+	out << "Liquid Load: " << aShip.liquidLoad << setfill('\0') << setw(10) << "Price: " << aShip.liquidPrice << endl;
+	if (aShip.refrigeratedLoad > 0) {
+		out << "Regfrigerated Load: " << aShip.refrigeratedLoad << setfill('\0') << setw(10) << "Price: " << aShip.refrigeratedPrice << endl;
+	}
+	if (aShip.specialLoad > 0) {
+		out << "Special Load: " << aShip.specialLoad << setfill('\0') << setw(10) << "Price: " << aShip.specialPrice << endl;
+	}
+	return out;
 }
