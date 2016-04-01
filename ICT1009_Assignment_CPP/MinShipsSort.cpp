@@ -107,6 +107,48 @@ vector<Ship> minShipsSort(vector<Customer> custList, vector<Ship> shipList)
 	return shipList;
 }
 
+void tracker(string customerName, int containers, string shipName, int containerType) {
+	//////////////////// WYNN THIS IS FOR YOU 01/04/16 TRACKING //////////////////////
+	string containerName;
+	switch (containerType) {
+	case 8:
+		containerName = " refrigerated (special) containers in ";
+		break;
+	case 7:
+		containerName = " heavy (special) containers in ";
+		break;
+	case 6:
+		containerName = " liquid (special) containers in ";
+		break;
+	case 5:
+		containerName = " basic (special) containers in ";
+		break;
+	case 4:
+		containerName = " refrigerated containers in ";
+		break;
+	case 3:
+		containerName = " heavy containers in ";
+		break;
+	case 2:
+		containerName = " liquid containers in ";
+		break;
+	case 1:
+		containerName = " basic containers in ";
+		break;
+	}
+
+	if (containers != 0) {
+		//this is the output you are interested in
+		cout << customerName << " has " << containers
+			<< containerName << shipName << endl;
+	}
+	else { //else nothing was filled into this ship
+		cout << "No room to carry any" << containerName << shipName << endl;
+	}
+	///////////////////////////////////////////////////////////////////////////////////
+	
+}
+
 vector<Ship> fillFun(vector<ValidShips> input, vector<Ship> &shipListIn) 
 {
 
@@ -118,7 +160,12 @@ vector<Ship> fillFun(vector<ValidShips> input, vector<Ship> &shipListIn)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." <<endl;
+					int amountFilled = amount;
 					amount = k->setCurrentSpecialRefrig(amount);
+					amountFilled = amountFilled - amount;
+
+					tracker(i.cust.getName(), amountFilled, k->getShipName(), 8);
+
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." <<endl << endl;
@@ -141,7 +188,11 @@ vector<Ship> fillFun(vector<ValidShips> input, vector<Ship> &shipListIn)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
+					int amountFilled = amount;
 					amount = k->setCurrentSpecialHeavy(amount);
+					amountFilled = amountFilled - amount;
+
+					tracker(i.cust.getName(), amountFilled, k->getShipName(), 7);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." << endl << endl;
@@ -164,7 +215,11 @@ vector<Ship> fillFun(vector<ValidShips> input, vector<Ship> &shipListIn)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
+					int amountFilled = amount;
 					amount = k->setCurrentLiquidLoad(amount);
+					amountFilled = amountFilled - amount;
+
+					tracker(i.cust.getName(), amountFilled, k->getShipName(), 6);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." <<endl << endl;
@@ -187,7 +242,11 @@ vector<Ship> fillFun(vector<ValidShips> input, vector<Ship> &shipListIn)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
+					int amountFilled = amount;
 					amount = k->setCurrentSpecialBasic(amount);
+					amountFilled = amountFilled - amount;
+
+					tracker(i.cust.getName(), amountFilled, k->getShipName(), 5);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." << endl << endl;
@@ -210,7 +269,11 @@ vector<Ship> fillFun(vector<ValidShips> input, vector<Ship> &shipListIn)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
+					int amountFilled = amount;
 					amount = k->setCurrentRefrigLoad(amount);
+					amountFilled = amountFilled - amount;
+
+					tracker(i.cust.getName(), amountFilled, k->getShipName(), 4);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." << endl << endl;
@@ -233,7 +296,11 @@ vector<Ship> fillFun(vector<ValidShips> input, vector<Ship> &shipListIn)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
+					int amountFilled = amount;
 					amount = k->setCurrentHeavyLoad(amount);
+					amountFilled = amountFilled - amount;
+
+					tracker(i.cust.getName(), amountFilled, k->getShipName(), 3);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." << endl << endl;
@@ -256,7 +323,11 @@ vector<Ship> fillFun(vector<ValidShips> input, vector<Ship> &shipListIn)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
+					int amountFilled = amount;
 					amount = k->setCurrentLiquidLoad(amount);
+					amountFilled = amountFilled - amount;
+
+					tracker(i.cust.getName(), amountFilled, k->getShipName(), 2);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." << endl << endl;
@@ -279,7 +350,11 @@ vector<Ship> fillFun(vector<ValidShips> input, vector<Ship> &shipListIn)
 				int amount = j->getAmount();
 				for (auto &k : i.shipList) {
 					cout << "Attempting to fill " << k->getShipName() << " with " << amount << " containers." << endl;
+					int amountFilled = amount;
 					amount = k->setCurrentBasicLoad(amount);
+					amountFilled = amountFilled - amount;
+
+					tracker(i.cust.getName(), amountFilled, k->getShipName(), 8);
 					if (amount == 0) {
 						//done with this type of container for this customer
 						cout << "All containers loaded. No error." << endl << endl;
