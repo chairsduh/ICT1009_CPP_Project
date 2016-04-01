@@ -4,6 +4,7 @@
 #include "Liquid.h"
 #include "Refrigerated.h"
 #include "MinShipsSort.h"
+#include "Logger.h"
 #include <algorithm>
 #include <iostream>
 using namespace std;
@@ -107,8 +108,7 @@ vector<Ship> minShipsSort(vector<Customer> custList, vector<Ship> shipList)
 	return shipList;
 }
 
-void tracker(string customerName, int containers, string shipName, int containerType) {
-	//////////////////// WYNN THIS IS FOR YOU 01/04/16 TRACKING //////////////////////
+void tracker(string customerName, int containers, string shipName, int containerType) {\
 	string containerName;
 	switch (containerType) {
 	case 8:
@@ -138,15 +138,12 @@ void tracker(string customerName, int containers, string shipName, int container
 	}
 
 	if (containers != 0) {
-		//this is the output you are interested in
-		cout << customerName << " has " << containers
-			<< containerName << shipName << endl;
+		Logger l(customerName);
+		l.logFill(customerName + " has " + to_string(containers) + containerName + shipName);
 	}
 	else { //else nothing was filled into this ship
 		cout << "No room to carry any" << containerName << shipName << endl;
-	}
-	///////////////////////////////////////////////////////////////////////////////////
-	
+	}	
 }
 
 vector<Ship> fillFun(vector<ValidShips> input, vector<Ship> &shipListIn) 
