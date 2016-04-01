@@ -20,4 +20,5 @@ bool shipCmp(Ship *, Ship *);
 vector<Ship> fillFun(vector<ValidShips>, vector<Ship>&);
 void printUsedShips(vector<Ship>&);
 void printUnusedShips(vector<Ship>&);
+void tracker(string, int, string, int);
 #endif
