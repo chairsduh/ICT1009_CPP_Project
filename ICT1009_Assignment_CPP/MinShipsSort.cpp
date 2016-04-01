@@ -7,6 +7,7 @@
 #include "Logger.h"
 #include <algorithm>
 #include <iostream>
+#include "Sorting.h"
 using namespace std;
 
 vector<ValidShips> sortShips(vector<Customer> custList, vector<Ship> &shipList)
@@ -88,6 +89,22 @@ void printUnusedShips(vector<Ship> &shipListIn) {
 	}
 	
 }
+vector<Ship> minTimeShipsSort(vector<Customer> custList, vector<Ship>shipList)
+{
+	//Sort shipList and custList based on earliest date
+	shipList = returnSortedShips(shipList);
+	custList = returnSortedCust(custList);
+	// Map each customer to a vector of valid ships
+	vector<ValidShips> validShipsList = sortShips(custList, shipList);
+	// Sort customers by date (earliest date first)
+	validShipsList = sortCustByDate(validShipsList);
+	shipList = fillFun(validShipsList, shipList);
+
+	printUsedShips(shipList);
+	//iterate through list of ships, identify ships not used.
+	printUnusedShips(shipList);
+	return shipList;
+}
 
 vector<Ship> minShipsSort(vector<Customer> custList, vector<Ship> shipList)
 {
@@ -110,6 +127,7 @@ vector<Ship> minShipsSort(vector<Customer> custList, vector<Ship> shipList)
 
 void tracker(string customerName, int containers, string shipName, int containerType) {\
 	string containerName;
+	string details;
 	switch (containerType) {
 	case 8:
 		containerName = " refrigerated (special) containers in ";
@@ -144,6 +162,7 @@ void tracker(string customerName, int containers, string shipName, int container
 	else { //else nothing was filled into this ship
 		cout << "No room to carry any" << containerName << shipName << endl;
 	}	
+	
 }
 
 vector<Ship> fillFun(vector<ValidShips> input, vector<Ship> &shipListIn) 
@@ -365,6 +384,5 @@ vector<Ship> fillFun(vector<ValidShips> input, vector<Ship> &shipListIn)
 			}
 		}
 	}
-
 	return shipListIn;
 }

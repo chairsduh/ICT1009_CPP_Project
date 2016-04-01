@@ -11,11 +11,12 @@ private:
 	ofstream out;
 	ifstream in;
 	string fileName;
+	string saveLine;
 	inline bool fileExists(const string&);
 public:
 	Logger(string);
 	void forCustomer(string);
 	void logFill(string);
-	string read();
+	void read(string);
 };
 #endif // ! LOGGER_H
