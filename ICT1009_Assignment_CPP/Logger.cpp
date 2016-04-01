@@ -30,3 +30,15 @@ void Logger::logFill(string data)
 	}
 	out.close();
 }
+
+void Logger::read(string fileName)
+{
+	in.open(fileName + ".txt");
+	while (!in.eof())
+	{
+		getline(in, saveLine);
+		cout << saveLine << endl;
+	}
+	
+	in.close();
+}

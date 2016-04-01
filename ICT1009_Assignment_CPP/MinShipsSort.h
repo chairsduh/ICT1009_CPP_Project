@@ -14,6 +14,7 @@ typedef struct ValidShipsType
 
 vector<ValidShips> sortCustByDate(vector<ValidShips>);
 vector<Ship> minShipsSort(vector<Customer>, vector<Ship>);
+vector<Ship>minTimeShipsSort(vector<Customer>, vector<Ship>);
 vector<ValidShips> sortShips(vector<Customer>, vector<Ship>&);
 bool custCmp(ValidShips, ValidShips);
 bool shipCmp(Ship *, Ship *);

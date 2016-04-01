@@ -51,6 +51,9 @@ public:
 	void setCountry(string);
 	string getPort() const;
 	void setPort(string);
+	int getDay();
+	int getMonth();
+	int getYear();
 
 	int getMaxLoad() const;
 	void setMaxLoad(int);

@@ -120,6 +120,19 @@ void Ship::setRefrigeratedePrice(double price) { this->refrigeratedPrice = price
 double Ship::getSpecialPrice() const { return this->specialPrice; }
 void Ship::setSpecialPrice(double price) { this->specialPrice = price; }
 
+int Ship::getDay()
+{
+	return this->day;
+}
+int Ship::getMonth()
+{
+	return this->month;
+}
+int Ship::getYear()
+{
+	return this->year;
+}
+
 double Ship::getCurrentCost() const { return this->currentCost; }
 
 int Ship::getCurrentBasicLoad() const { return this->currentBasicLoad; }
