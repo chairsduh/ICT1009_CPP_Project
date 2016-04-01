@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="Basic.h" />
     <ClInclude Include="Container.h" />
+    <ClInclude Include="CRUDFunction.h" />
     <ClInclude Include="Customer.h" />
     <ClInclude Include="FileDialog.h" />
     <ClInclude Include="Heavy.h" />
