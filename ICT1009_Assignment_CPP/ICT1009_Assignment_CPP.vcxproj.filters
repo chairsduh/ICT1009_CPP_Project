@@ -51,7 +51,10 @@
     <ClInclude Include="..\..\..\CPP_Assignment\ICT1009_CPP_Project\ICT1009_Assignment_CPP\concol.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\CPP_Assignment\ICT1009_CPP_Project\ICT1009_Assignment_CPP\Sorting.h">
+    <ClInclude Include="MinCost.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sorting.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -74,7 +77,10 @@
     <ClCompile Include="Logger.cpp">
       <Filter>Resource Files\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\CPP_Assignment\ICT1009_CPP_Project\ICT1009_Assignment_CPP\Sorting.cpp">
+    <ClCompile Include="MinCost.cpp">
+      <Filter>Resource Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting.cpp">
       <Filter>Resource Files\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
