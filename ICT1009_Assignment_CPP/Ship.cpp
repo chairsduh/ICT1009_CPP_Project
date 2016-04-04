@@ -135,6 +135,12 @@ int Ship::getYear()
 
 double Ship::getCurrentCost() const { return this->currentCost; }
 
+
+void Ship::setCurrentCost(double value) 
+{
+	this->currentCost += value;
+}
+
 int Ship::getCurrentBasicLoad() const { return this->currentBasicLoad; }
 int Ship::setCurrentBasicLoad(int load) 
 { 

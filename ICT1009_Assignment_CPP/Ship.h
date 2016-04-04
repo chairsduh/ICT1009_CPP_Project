@@ -80,7 +80,9 @@ public:
 	void setSpecialPrice(double);
 
 	double getCurrentCost() const;
-	
+
+	void setCurrentCost(double);
+
 	int getCurrentBasicLoad() const;
 	int setCurrentBasicLoad(int);
 	int getCurrentHeavyLoad() const;
